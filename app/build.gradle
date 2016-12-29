@@ -19,10 +19,12 @@ android {
     }
 
     packagingOptions {
-        exclude 'META_INF/notice.txt'
-        exclude 'META_INF/license.txt'
         exclude 'META_INF/NOTICE'
         exclude 'META_INF/LICENSE'
+        exclude 'META_INF/notice.txt'
+        exclude 'META_INF/license.txt'
+        exclude 'META-INF/notice'
+        exclude 'META-INF/license'
     }
 }
 

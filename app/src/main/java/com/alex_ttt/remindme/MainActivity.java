@@ -1,17 +1,22 @@
 package com.alex_ttt.remindme;
 
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.alex_ttt.remindme.adapter.TabsFragmentAdapter;
+import com.alex_ttt.remindme.adapter.fragments.AddingItemFragment;
 import com.alex_ttt.remindme.dto.RemindDTO;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -28,6 +33,7 @@ public class MainActivity extends AppCompatActivity
     private DrawerLayout drawerLayout;
     private ViewPager viewPager;
     private TabsFragmentAdapter adapter;
+    private FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +43,18 @@ public class MainActivity extends AppCompatActivity
 
         initToolbar();
         initNavigationView();
+        initFloatingButton();
         initTabs();
+    }
+
+    private void initFloatingButton() {
+        floatingActionButton =  (FloatingActionButton) findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AddingItemFragment().show(getSupportFragmentManager(), "dialog");
+            }
+        });
     }
 
     private void initToolbar() {

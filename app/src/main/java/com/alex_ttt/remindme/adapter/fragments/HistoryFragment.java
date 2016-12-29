@@ -39,10 +39,24 @@ public class HistoryFragment extends AbstractTabFragment {
         view = inflater.inflate(LAYOUT, container, false);
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.recycleView);
         rv.setLayoutManager(new LinearLayoutManager(context));
-        adapter = new RemindListAdapter(data);
-        rv.setAdapter(adapter);
+        //adapter = new RemindListAdapter(data);
+        //rv.setAdapter(adapter);
+        rv.setAdapter(new RemindListAdapter(createMockData()));
 
         return view;
+    }
+
+    private List<RemindDTO> createMockData() {
+        List<RemindDTO> data = new ArrayList<>();
+        data.add(new RemindDTO("Item 1"));
+        data.add(new RemindDTO("Item 2"));
+        data.add(new RemindDTO("Item 3"));
+        data.add(new RemindDTO("Item 4"));
+        data.add(new RemindDTO("Item 5"));
+        data.add(new RemindDTO("Item 6"));
+
+        return data;
+
     }
 
     public void setContext(Context context) {
